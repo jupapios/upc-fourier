@@ -385,6 +385,10 @@ input[type=checkbox]
 	input
 		margin-bottom 10px
 
+.table-container
+	max-height 300px
+	overflow-y scroll
+
 .graph
 	float right
 	height 400px
@@ -418,8 +422,11 @@ table.table
 		background #fff
 		vertical-align top
 
-	tbody tr.odd td
+	tbody tr:nth-child(even) td
 		background #F0F0F6
+
+	tbody tr:hover td
+		background #8dbdd8
 
 
 /* ==|== media queries ======================================================

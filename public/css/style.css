@@ -61,13 +61,15 @@ input[type=checkbox]{margin-right:6px}
 .box{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid #09c;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;margin-bottom:20px;padding:.6em}
 .menu{float:left;overflow:hidden;width:20%;}
 .menu input{margin-bottom:10px}
+.table-container{max-height:300px;overflow-y:scroll}
 .graph{float:right;height:400px;width:79%}
 .wrapper{height:400px}
 table.table{border-collapse:separate;border-spacing:2px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background:#cdcdcd;margin:10px 0 15px;width:100%;text-align:left;}
 table.table thead tr th{background:#e6eeee;cursor:pointer;}
 table.table thead tr th:hover{background:#8dbdd8}
 table.table tbody td{color:#3d3d3d;font-size:.8em;padding:2px;background:#fff;vertical-align:top}
-table.table tbody tr.odd td{background:#f0f0f6}
+table.table tbody tr:nth-child(even) td{background:#f0f0f6}
+table.table tbody tr:hover td{background:#8dbdd8}
 @media only screen and (max-width: 800px){.wrapper{height:auto}
 .graph,.menu{float:none;width:auto}
 .menu > div{display:none}
