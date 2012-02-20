@@ -2,4 +2,4 @@
 # GET home page.
 
 exports.index = (req, res) ->
-	res.render 'index', { title: 'Express' }
+	res.render 'index', { title: 'upc - fourier' }
