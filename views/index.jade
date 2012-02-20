@@ -1,0 +1,30 @@
+header
+	//div header
+div.wrapper(role='main')
+	article.box.menu
+		h1 Opciones
+		div texto 
+			span#len 0
+		input#text(type='text', placeholder='texto')
+		div armonicas 
+		input.number(type='text', placeholder='armonicas')
+		div frecuencia
+		input.number(type='text', placeholder='frecuencia')
+		div
+			input#check(type='checkbox', checked) 
+			| show debug
+		#arr
+	article.box.graph
+		h1 Grafica
+footer.debug.box
+	h1 Debug
+	table.table
+		thead
+			tr
+				th Char
+				th Ascii
+				th Binary
+				th a0
+				th an
+				th bn
+		tbody#data
