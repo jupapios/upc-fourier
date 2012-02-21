@@ -1,16 +1,21 @@
 var node = {
+	text: $('#text'),
+	arm: $('#arm'),
+	frec: $('#frec'),
 	init: function () {
-		$('#text').on('keyup keydown', function () { node._onChange($('#text'), $('#len'), $('#data')); });
+		var self=this;
+		self.text.on('keyup keydown', function () { node._onChange(self.text, $('#len'), $('#data')); });
 		$('.number').on('keydown', function (event) { valide.numeric(event) });
 		$('#check').on('click', function () {
 			if ($('#check:checked').length) $('.debug').show('slow');
 			else $('.debug').hide('slow');
 		});
-		$('#arm').on('keyup keydown change', function () { 
-			$('.arm').text($('#arm').val());
+		self.arm.on('keyup keydown change', function () { 
+			$('.arm').text(self.arm.val());
+			node._graph();
 		});
-		$('#frec').on('keyup keydown change', function () { 
-			$('.frec').text($('#frec').val()+' ');
+		self.frec.on('keyup keydown change', function () { 
+			node._graph();
 		});
 
 		//Enable all fields (inputs)
@@ -47,6 +52,7 @@ var node = {
 			data.html(r.join('')); 
 		});
 		if (str.length === 0) data.html(''); 
+		node._graph();
 		//console.log(bin);
 	},
 	_toBinary: function (decimal) {
@@ -68,10 +74,11 @@ var node = {
 		return answer.reverse();
 	},
 	_graph: function () {
+		var self=this;
 		var d1 = [];
 		var fn = function (t) {
-			var ans = 1/2;
-			return ans + (2/Math.PI)*sum(20, t);
+			var ans = 0;
+			return ans + self.frec.val()*sum(self.arm.val(), t);
 		}
 
 		var sum = function (n, t) {
@@ -79,7 +86,7 @@ var node = {
 			for (var i=1; i<=n*2; i+=2)	ans += (1/i)*Math.sin(i*t);
 			return ans;
 		}
-		for (var t = 0; t < 20; t += 0.001) d1.push([t, fn(t)]);
+		if(self.arm.val().length > 0 && self.frec.val().length > 0) for (var t = 0; t < self.text.val().length*(8*Math.PI); t += 0.015) d1.push([t, fn(t)]);
 		var graph = $("#graph");
 		var plot = $.plot(graph, [d1]);	
 	}
@@ -87,7 +94,7 @@ var node = {
 var valide = {
 	numeric: function (event) {
 		if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || (event.keyCode == 65 && event.ctrlKey === true) ||
-		(event.keyCode >= 35 && event.keyCode <= 39)) return;
+		(event.keyCode >= 35 && event.keyCode <= 39) || event.keyCode == 110) return;
 		else if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) event.preventDefault();
 	}
 }
