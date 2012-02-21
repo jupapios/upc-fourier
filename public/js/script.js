@@ -6,6 +6,21 @@ var node = {
 			if ($('#check:checked').length) $('.debug').show('slow');
 			else $('.debug').hide('slow');
 		});
+		$('#arm').on('keyup keydown change', function () { 
+			$('.arm').text($('#arm').val());
+		});
+		$('#frec').on('keyup keydown change', function () { 
+			$('.frec').text($('#frec').val()+' ');
+		});
+
+		//Enable all fields (inputs)
+		$('input').prop('disabled', false);
+
+		$('.load').remove();
+		$('header, div, footer').removeClass('hide');
+
+		//test graph
+		node._graph();
 	},
 	_onChange: function (self, len, data) {
 		var str = self.val();
@@ -33,7 +48,7 @@ var node = {
 		});
 		if (str.length === 0) data.html(''); 
 		//console.log(bin);
-	}, 
+	},
 	_toBinary: function (decimal) {
 		answer = new Array(8);
 		for (var i = 0; i < answer.length; i++) answer[i] = 0;
@@ -51,6 +66,22 @@ var node = {
 			} else answer[l2] = 0;
 		}
 		return answer.reverse();
+	},
+	_graph: function () {
+		var d1 = [];
+		var fn = function (t) {
+			var ans = 1/2;
+			return ans + (2/Math.PI)*sum(20, t);
+		}
+
+		var sum = function (n, t) {
+			var ans = 0;
+			for (var i=1; i<=n*2; i+=2)	ans += (1/i)*Math.sin(i*t);
+			return ans;
+		}
+		for (var t = 0; t < 20; t += 0.001) d1.push([t, fn(t)]);
+		var graph = $("#graph");
+		var plot = $.plot(graph, [d1]);	
 	}
 }
 var valide = {

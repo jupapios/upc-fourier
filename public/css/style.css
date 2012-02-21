@@ -50,6 +50,7 @@ table{border-collapse:collapse;border-spacing:0}
 td{vertical-align:top}
 .chromeframe{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}
 @font-face{font-family:'josefin';src:url("../font/josefin/JosefinSansStd-Light-webfont.eot");src:url("../font/josefin/JosefinSansStd-Light-webfont.eot?#iefix") format('embedded-opentype'),url("../font/josefin/JosefinSansStd-Light-webfont.woff") format('woff'),url("../font/josefin/JosefinSansStd-Light-webfont.ttf") format('truetype'),url("../font/josefin/JosefinSansStd-Light-webfont.svg#JosefinSansStdLight") format('svg');font-weight:normal;font-style:normal}
+html,body{height:100%}
 html *{font-family:josefin;font-size:18px;font-weight:bold}
 h1{font-size:20px;margin-top:0}
 body{padding:10px}
@@ -58,17 +59,19 @@ input[type=text]{border:1px dotted #09c;-webkit-border-radius:4px;-moz-border-ra
 input[type=text]:focus{border:1px dotted #008000}
 input[type=text]:active{border:1px solid #008000}
 input[type=checkbox]{margin-right:6px}
+.load{background:url("../img/242.gif") no-repeat;height:25px;left:50%;position:absolute;margin-left:-12px;margin-top:-12px;top:50%;width:25px}
 .box{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid #09c;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;margin-bottom:20px;padding:.6em}
 .menu{float:left;overflow:hidden;width:20%;}
 .menu input{margin-bottom:10px}
 .table-container{max-height:300px;overflow-y:scroll}
+.debug .title{font-style:italic}
 .graph{float:right;height:400px;width:79%}
 .wrapper{height:400px}
 table.table{border-collapse:separate;border-spacing:2px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background:#cdcdcd;margin:10px 0 15px;width:100%;text-align:left;}
 table.table thead tr th{background:#e6eeee;cursor:pointer;}
 table.table thead tr th:hover{background:#8dbdd8}
 table.table tbody td{color:#3d3d3d;font-size:.8em;padding:2px;background:#fff;vertical-align:top}
-table.table tbody tr:nth-child(even) td{background:#f0f0f6}
+table.table tbody tr:nth-child(even) td{background:#e6eeee}
 table.table tbody tr:hover td{background:#8dbdd8}
 @media only screen and (max-width: 800px){.wrapper{height:auto}
 .graph,.menu{float:none;width:auto}
@@ -76,6 +79,7 @@ table.table tbody tr:hover td{background:#8dbdd8}
 .debug{display:none !important}
 }.ir{display:block;border:0;text-indent:-999em;overflow:hidden;background-color:transparent;background-repeat:no-repeat;text-align:left;direction:ltr;*line-height:0;}
 .ir br{display:none}
+.hide{opacity:0;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0)}
 .hidden{display:none;visibility:hidden}
 .visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}
 .visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}

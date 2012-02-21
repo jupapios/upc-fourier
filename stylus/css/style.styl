@@ -336,8 +336,11 @@ td
 @import '_animations'
 
 //variables
-
 color-blue = #0099CC
+
+html
+body
+	height 100%
 
 html *
 	font-family josefin
@@ -370,6 +373,16 @@ input[type=text]
 input[type=checkbox]
 	margin-right 6px
 
+.load
+	background url('../img/242.gif') no-repeat
+	height 25px
+	left 50%
+	position absolute
+	margin-left -12px
+	margin-top @margin-left
+	top @left
+	width @height
+
 .box
 	box-sizing border-box
 	border 1px solid color-blue
@@ -389,6 +402,9 @@ input[type=checkbox]
 	max-height 300px
 	overflow-y scroll
 
+.debug .title
+	font-style italic
+
 .graph
 	float right
 	height 400px
@@ -398,7 +414,6 @@ input[type=checkbox]
 	height 400px
 
 // table
-
 table.table
 	border-collapse separate
 	border-spacing 2px
@@ -423,7 +438,7 @@ table.table
 		vertical-align top
 
 	tbody tr:nth-child(even) td
-		background #F0F0F6
+		background #e6eeee
 
 	tbody tr:hover td
 		background #8dbdd8
@@ -463,6 +478,9 @@ table.table
 
 	& br
 		display none
+
+.hide
+	opacity 0
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden
