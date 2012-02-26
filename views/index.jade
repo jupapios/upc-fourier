@@ -3,35 +3,44 @@ header.hide
 div.wrapper(role='main').hide
 	article.box.menu
 		h1 Opciones
-		div texto 
-			span#len 0
-		input#text(type='text', placeholder='texto', disabled)
+		div caracter
+		input#text(type='text', placeholder='caracter', maxlength='1', value='', disabled)
 		div armonicas 
-		input.number#arm(type='text', placeholder='armonicas', disabled)
-		div frecuencia
-		input.number#frec(type='text', placeholder='frecuencia', disabled)
+		input.number#arm(type='text', placeholder='armonicas', value='1', disabled)
+		div frecuencia fundamental
+		input.number#frec(type='text', placeholder='frecuencia fundamental', value='150', disabled)
 		div
 			input#check(type='checkbox', checked) 
 			| show debug
 		#arr
 	article.box.graph
 		h1 Grafica
-		div#graph(style='width:200%; height:84%;')
+		div#graph(style='height:84%;')
 footer.debug.box.hide
 	h1 Debug
-	div.title Armonicas 
-		span.arm 
-	div.title Frecuencia 
-		span.frec 
-		span Hz
-	div.table-container
-		table.table
-			thead
-				tr
-					th Char
-					th Ascii
-					th Binary
-					th a0
-					th an
-					th bn
-			tbody#data
+	table.table
+		tbody
+			tr
+				td.title Armonicas
+				td#dbg_arm
+			tr
+				td.title Frec. Fundamental
+				td#dbg_frec
+			tr
+				td.title Caracter
+				td#dbg_char
+			tr
+				td.title ASCII
+				td#dbg_ascii
+			tr
+				td.title Binario
+				td#dbg_bin
+			tr
+				td.title a0
+				td#dbg_a0
+			tr
+				td.title w0
+				td#dbg_w0
+			tr
+				td.title T
+				td#dbg_t
