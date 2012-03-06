@@ -6,6 +6,7 @@ dom = {
 	txt_char: $ '#text'
 	txt_armn: $ '#arm'
 	txt_frec: $ '#frec'
+	txt_amp: $ '#amp'	
 	chk_debg: $ '#check'
 	box_debg: $ '.debug'
 	ico_load: $ '.load'
@@ -33,6 +34,7 @@ val = {
 	f: 0
 	w0: 0
 	T: 0
+	amp: 0
 }
 
 # valide functions
@@ -58,6 +60,8 @@ node = {
 			self._change()
 		dom.txt_frec.on 'keyup', ()->
 			self._change()
+		dom.txt_amp.on 'keyup', ()->
+			self._change()
 		dom.chk_debg.on 'click', ()->
 			if dom.chk_debg.is ':checked'
 				dom.box_debg.show 'slow'
@@ -75,10 +79,12 @@ node = {
 		char = dom.txt_char.val()
 		armn = dom.txt_armn.val()
 		frec = dom.txt_frec.val()
-		if char.length > 0 and armn.length > 0 and frec.length > 0
+		amp = dom.txt_amp.val()
+		if char.length > 0 and armn.length > 0 and frec.length > 0 and amp.length > 0
 			val.f = frec
 			val.w0 = 2 * val.pi * parseInt frec
 			val.T = 1 / parseInt frec * 8
+			val.amp = parseInt amp
 			ascii = self._toascii char
 			bin = self._tobin ascii
 			a0 = self._geta0 bin
@@ -90,7 +96,7 @@ node = {
 			dom.dbg_a0.text a0
 			dom.dbg_arm.text armn
 			dom.dbg_w0.text val.w0
-			dom.dbg_t.text val.T						
+			dom.dbg_t.text val.T
 
 	# converts character value to ascii
 	_toascii: (char)->
@@ -108,7 +114,7 @@ node = {
 		a0 = 0
 		for i in [0..7]
 			if bin[i] == '1'
-				a0 += 1/8
+				a0 += val.amp/8
 		a0
 
 	# returns an (fourier)

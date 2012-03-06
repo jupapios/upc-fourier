@@ -5,6 +5,7 @@
     txt_char: $('#text'),
     txt_armn: $('#arm'),
     txt_frec: $('#frec'),
+    txt_amp: $('#amp'),
     chk_debg: $('#check'),
     box_debg: $('.debug'),
     ico_load: $('.load'),
@@ -29,7 +30,8 @@
     pi_4: Math.PI / 4,
     f: 0,
     w0: 0,
-    T: 0
+    T: 0,
+    amp: 0
   };
 
   valide = {
@@ -58,6 +60,9 @@
       dom.txt_frec.on('keyup', function() {
         return self._change();
       });
+      dom.txt_amp.on('keyup', function() {
+        return self._change();
+      });
       dom.chk_debg.on('click', function() {
         if (dom.chk_debg.is(':checked')) {
           return dom.box_debg.show('slow');
@@ -70,15 +75,17 @@
       return $('header, div, footer').removeClass('hide');
     },
     _change: function() {
-      var a0, armn, ascii, bin, char, frec, self;
+      var a0, amp, armn, ascii, bin, char, frec, self;
       self = this;
       char = dom.txt_char.val();
       armn = dom.txt_armn.val();
       frec = dom.txt_frec.val();
-      if (char.length > 0 && armn.length > 0 && frec.length > 0) {
+      amp = dom.txt_amp.val();
+      if (char.length > 0 && armn.length > 0 && frec.length > 0 && amp.length > 0) {
         val.f = frec;
         val.w0 = 2 * val.pi * parseInt(frec);
         val.T = 1 / parseInt(frec * 8);
+        val.amp = parseInt(amp);
         ascii = self._toascii(char);
         bin = self._tobin(ascii);
         a0 = self._geta0(bin);
@@ -108,7 +115,7 @@
       var a0, i;
       a0 = 0;
       for (i = 0; i <= 7; i++) {
-        if (bin[i] === '1') a0 += 1 / 8;
+        if (bin[i] === '1') a0 += val.amp / 8;
       }
       return a0;
     },
